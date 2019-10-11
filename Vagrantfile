@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
 
   # Kubernetes Master Server
   config.vm.define "kmanager" do |kmanager|
-    kmanager.vm.box = "centos/7"
+    kmanager.vm.box = "mrlesmithjr/centos7"
     kmanager.vm.hostname = "kmanager.k8.com"
     kmanager.vm.network "private_network", ip: "172.168.33.100"
     kmanager.vm.provider "virtualbox" do |v|
@@ -25,7 +25,7 @@ Vagrant.configure(2) do |config|
   # Kubernetes Worker Nodes
   (1..NodeCount).each do |i|
     config.vm.define "kworker#{i}" do |workernode|
-      workernode.vm.box = "centos/7"
+      workernode.vm.box = "mrlesmithjr/centos7"
       workernode.vm.hostname = "kworker#{i}.k8.com"
       workernode.vm.network "private_network", ip: "172.168.33.10#{i}"
       workernode.vm.provider "virtualbox" do |v|
